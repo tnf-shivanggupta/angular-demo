@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import '~@tandfgroup/tnf-design-system/public/themes/ecf.css';  */
+
+body{
+	margin: 0;
+	$open-sans-font-family: unquote("Open Sans");
+	$font-family-sans-serif: $open-sans-font-family;
+	$scs-font-root-path: "/assets/fonts/";
+
+	$open-sans-font-path: $scs-font-root-path + unquote("/open-sans");
+	@mixin font-face(
+		$fontpath,
+		$fontname,
+		$fontversion: 1,
+		$fontfamily: arial,
+		$fontweight: normal,
+		$fontstyle: normal,
+		$fontsize: 15px
+	) {
+		@font-face {
+			font-family: $fontfamily;
+			src: url("#{$fontpath}/#{$fontname}.eot?v=#{$fontversion}");
+			src: url("#{$fontpath}/#{$fontname}.eot?#iefix&v=#{$fontversion}") format("embedded-opentype"),
+				url("#{$fontpath}/#{$fontname}.woff?v=#{$fontversion}") format("woff"),
+				url("#{$fontpath}/#{$fontname}.ttf?v=#{$fontversion}") format("truetype"),
+				url("#{$fontpath}/#{$fontname}.svg##{$fontname}?v=#{$fontversion}") format("svg");
+			font-weight: $fontweight;
+			font-style: $fontstyle;
+			font-size: $fontsize;
+		}
+	}
+
+	@include font-face($open-sans-font-path, unquote("OpenSans-Regular-webfont"), 1, $open-sans-font-family, 400, normal);
+	@include font-face($open-sans-font-path, unquote("OpenSans-Italic-webfont"), 1, $open-sans-font-family, 400, italic);
+	@include font-face($open-sans-font-path, unquote("OpenSans-Bold-webfont"), 1, $open-sans-font-family, 700, normal);
+	@include font-face(
+		$open-sans-font-path,
+		unquote("OpenSans-BoldItalic-webfont"),
+		1,
+		$open-sans-font-family,
+		700,
+		italic
+	);
+	font-family: var(--tnf-btn-font-family, "Open Sans");
+
+	--tnf-header-bgcolor: #D8D8D8;
+	--tnf-header-profile-name-color: black;
+}
